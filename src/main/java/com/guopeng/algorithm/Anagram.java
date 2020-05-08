@@ -2,7 +2,14 @@ package com.guopeng.algorithm;
 
 
 /**
- * 异位词
+ * 效的字母异位词
+ * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+ *
+ * 示例 1:
+ *
+ * 输入: s = "anagram", t = "nagaram"
+ * 输出: true
+ *
  *
  * @Author theone
  * @Date 2020/5/1 11:33
