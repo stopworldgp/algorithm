@@ -3,3 +3,5 @@
 1.字母异位词分组 LetterEccentricGrouping
 
 2.开方求素数 PrimeNumber_01
+
+3.回旋镖的数量 NumberOfBoomerangs
