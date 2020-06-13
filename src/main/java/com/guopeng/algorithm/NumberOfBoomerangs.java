@@ -33,35 +33,35 @@ public class NumberOfBoomerangs {
      * 2. 当找出这些点后，如何计算有多少对组合，转化为组合排列问题
      * 3. 比如 到a点距离相等的点有 b，c，那么组合就是 abc和acb，也就是 2*（2-1），当是n时为 n*(n-1)组
      * 4. 所以最终的解题思路为，遍历 二维数组，找出每个点对应与其距离相等的所有点，然后计算这些所有点的组合数，相加为最终结果。
+     * <p>
+     * 5.优化项，参考leetcode 提交时间最少的代码，有两点优化，一点：map.clear比new 更快，二点，将计算组合数由 n*(n-1)换成 (1+2+...+n-1)*2
+     * 原因  1+2+...+n = (n+1)*n/2 ,公式证明：https://zhidao.baidu.com/question/140498967.html
      *
      * @param points
      * @return
      */
     public int numberOfBoomerangs(int[][] points) {
-        int result = 0;
+        int sum = 0;
+        Map<Double, Integer> map = new HashMap<>();
+        int total;
         //1.遍历 二维数组
         for (int i = 0; i < points.length; i++) {
-            Map<Double, Integer> map = new HashMap<>();
             //2.遍历 二维数组找到与这个点 距离相等的所有点
+            map.clear();
             for (int j = 0; j < points.length; j++) {
                 if (i == j) {
                     continue;
                 }
                 double distance = calculateDistance(points[i], points[j]);
                 if (map.containsKey(distance)) {
-                    map.put(distance, map.get(distance) + 1);
+                    sum += total = map.getOrDefault(distance, 0);
+                    map.put(distance, ++total);
                 } else {
                     map.put(distance, 1);
                 }
             }
-            //3.计算组合数
-            for (Map.Entry<Double, Integer> doubleIntegerEntry : map.entrySet()) {
-                if (doubleIntegerEntry.getValue() > 1) {
-                    result += (doubleIntegerEntry.getValue()) * (doubleIntegerEntry.getValue() - 1);
-                }
-            }
         }
-        return result;
+        return sum << 1;
     }
 
     private double calculateDistance(int[] points0, int[] points1) {
