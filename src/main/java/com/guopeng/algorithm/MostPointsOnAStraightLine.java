@@ -2,7 +2,6 @@ package com.guopeng.algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 /**
  * 直线上最多的点数
@@ -41,7 +40,7 @@ import java.util.regex.Matcher;
  * 步骤：
  * 1.遍历 points  获取起始点
  * 2.循环中遍历 points
- * 2.计算a=(y2-y1)/(x2-x1)
+ * 2.计算a=(y2-y1)/(x2-x1) ，由于 有余数的情况，采用欧几里得进行求出 (y2-y1)和(x2-x1)最大公约数a，然后把key设置为    key = x / a + ":" + y / a;
  * 3.map put计数
  * 4.比较maxNumber
  *
@@ -86,8 +85,8 @@ public class MostPointsOnAStraightLine {
                     maxTemp = integerIntegerEntry.getValue();
                 }
             }
-            maxResult = Math.max(maxResult,maxTemp+duplicate);
-            duplicate =0;
+            maxResult = Math.max(maxResult, maxTemp + duplicate);
+            duplicate = 0;
         }
         return maxResult + 1;
     }

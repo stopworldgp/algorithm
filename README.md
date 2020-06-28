@@ -5,3 +5,5 @@
 2.开方求素数 PrimeNumber_01
 
 3.回旋镖的数量 NumberOfBoomerangs
+
+4.存在重复元素 III ContainsNearbyAlmostDuplicateTest
