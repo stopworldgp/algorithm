@@ -1,4 +1,4 @@
-package com.guopeng.algorithm;
+package com.guopeng.algorithm.lookuptable;
 
 /**
  * https://leetcode-cn.com/problems/trapping-rain-water/

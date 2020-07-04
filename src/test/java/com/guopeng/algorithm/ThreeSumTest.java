@@ -1,15 +1,12 @@
 package com.guopeng.algorithm;
 
-import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
+import com.guopeng.algorithm.lookuptable.ThreeSum;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @author jony.huang

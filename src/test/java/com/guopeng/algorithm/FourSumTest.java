@@ -1,5 +1,6 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.FourSum;
 import org.junit.Test;
 
 /**

@@ -1,4 +1,4 @@
-package com.guopeng.algorithm;
+package com.guopeng.algorithm.lookuptable;
 
 /**
  * 快乐数

@@ -1,5 +1,7 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.LetterEccentricGrouping;
+import com.guopeng.algorithm.lookuptable.LetterEccentricGrouping_02;
 import org.junit.Test;
 
 import java.util.List;

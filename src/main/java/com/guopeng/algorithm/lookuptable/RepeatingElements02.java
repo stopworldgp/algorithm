@@ -1,4 +1,4 @@
-package com.guopeng.algorithm;
+package com.guopeng.algorithm.lookuptable;
 
 import java.util.Set;
 

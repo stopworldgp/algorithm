@@ -1,9 +1,8 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.RepeatingElements;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author theone

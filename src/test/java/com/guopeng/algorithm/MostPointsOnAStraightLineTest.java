@@ -1,9 +1,8 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.MostPointsOnAStraightLine;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author jony.huang

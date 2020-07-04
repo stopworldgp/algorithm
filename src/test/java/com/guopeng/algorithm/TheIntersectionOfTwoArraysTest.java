@@ -1,9 +1,8 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.TheIntersectionOfTwoArrays;
 import org.junit.Assert;
 import org.junit.Test;
-
-import javax.annotation.Resource;
 
 
 /**

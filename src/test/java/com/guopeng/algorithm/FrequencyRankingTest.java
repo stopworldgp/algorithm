@@ -1,5 +1,6 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.FrequencyRanking;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,9 +1,8 @@
 package com.guopeng.algorithm;
 
+import com.guopeng.algorithm.lookuptable.ContainsNearbyAlmostDuplicate;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * 示例 1:
@@ -30,14 +29,14 @@ public class ContainsNearbyAlmostDuplicateTest {
     @Test
     public void containsNearbyAlmostDuplicate() {
         int[] nums = {1,2,3,1};
-        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate(nums,3,0);
+        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate_02(nums,3,0);
         Assert.assertTrue(actual);
     }
 
     @Test
     public void containsNearbyAlmostDuplicate01() {
         int[] nums = {1,0,1,1};
-        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate(nums,1,2);
+        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate_02(nums,1,2);
         Assert.assertTrue(actual);
 
     }
@@ -45,7 +44,7 @@ public class ContainsNearbyAlmostDuplicateTest {
     @Test
     public void containsNearbyAlmostDuplicate02() {
         int[] nums = {1,5,9,1,5,9};
-        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate(nums,2,3);
+        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate_02(nums,2,3);
         Assert.assertFalse(actual);
     }
 
@@ -53,14 +52,14 @@ public class ContainsNearbyAlmostDuplicateTest {
     @Test
     public void containsNearbyAlmostDuplicate03() {
         int[] nums = {2,2};
-        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate(nums,3,0);
+        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate_02(nums,3,0);
         Assert.assertTrue(actual);
     }
 
     @Test
     public void containsNearbyAlmostDuplicate04() {
         int[] nums = {7,1,3};
-        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate(nums,2,3);
+        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate_02(nums,2,3);
         Assert.assertTrue(actual);
     }
 
@@ -68,7 +67,7 @@ public class ContainsNearbyAlmostDuplicateTest {
     @Test
     public void containsNearbyAlmostDuplicate05() {
         int[] nums = {-1,2147483647};
-        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate(nums,1,2147483647);
+        boolean actual  =  containsNearbyAlmostDuplicate.containsNearbyAlmostDuplicate_02(nums,1,2147483647);
         Assert.assertFalse(actual);
     }
 
