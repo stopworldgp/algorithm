@@ -1,7 +1,5 @@
 package com.guopeng.algorithm.linkedlist;
 
-import org.w3c.dom.Node;
-
 /**
  * 来源:https://leetcode-cn.com/explore/learn/card/linked-list/193/singly-linked-list/741/
  * 设计链表
@@ -49,16 +47,13 @@ public class MyLinkedList {
 
     private Node head;
 
-    private Node tail;
-
     private int size;
 
     /**
      * Initialize your data structure here.
      */
     public MyLinkedList() {
-        this.head = null;
-        this.tail = null;
+        this.head = new Node(0, null);
         this.size = 0;
     }
 
@@ -66,13 +61,10 @@ public class MyLinkedList {
      * Get the value of the index-th node in the linked list. If the index is invalid, return -1.
      */
     public int get(int index) {
-        if (size <= index) {
+        if (index < 0 || index >= size) {
             return -1;
         }
-        Node tmp = head;
-        for (int i = 0; i < index; i++) {
-            tmp = tmp.next;
-        }
+        Node tmp = getNode(index + 1);
         return tmp.val;
     }
 
@@ -80,83 +72,50 @@ public class MyLinkedList {
      * Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
      */
     public void addAtHead(int val) {
-        Node tmp = new Node(val,null);
-        if (head == null) {
-            head = tail = tmp;
-        }else {
-            tmp.next = head;
-            head = tmp;
-        }
-        size++;
+        addAtIndex(0, val);
     }
 
     /**
      * Append a node of value val to the last element of the linked list.
      */
     public void addAtTail(int val) {
-        Node tmp = new Node(val, null);
-        if (head == null) {
-            head = tmp;
-            tail = tmp;
-        } else {
-            tail.next = tmp;
-            tail = tmp;
-        }
-        size++;
+        addAtIndex(size, val);
     }
 
     /**
      * Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
      */
     public void addAtIndex(int index, int val) {
-        if (size <= index) {
+        if (index > size) {
             return;
         }
+        if (index < 0) {
+            index = 0;
+        }
+        Node tmp = getNode(index);
         Node node = new Node(val, null);
-        if (head == null) {
-            addAtHead(val);
-        }
-        if (index == 0) {
-            node.next = head;
-            head = node;
-            size++;
-            return;
-        }
+        node.next = tmp.next;
+        tmp.next = node;
+        size++;
+    }
+
+    private Node getNode(int index) {
         Node tmp = head;
-        Node pre = null;
         for (int i = 0; i < index; i++) {
-            pre = tmp;
             tmp = tmp.next;
         }
-        pre.next = node;
-        node.next = tmp;
-        size++;
+        return tmp;
     }
 
     /**
      * Delete the index-th node in the linked list, if the index is valid.
      */
     public void deleteAtIndex(int index) {
-        if (size <= index) {
+        if (index < 0 || index >= size) {
             return;
         }
-        if (head == null) {
-            return;
-        }
-        if (index == 0) {
-            head = head.next;
-            tail = head;
-            size--;
-            return;
-        }
-        Node tmp = head;
-        Node pre = null;
-        Node last = null;
-        for (int i = 0; i < index; i++) {
-            pre = tmp;
-            last = tmp.next;
-        }
-        pre.next = last.next;
+        Node tmp = getNode(index);
+        tmp.next = tmp.next.next;
         size--;
     }
 
