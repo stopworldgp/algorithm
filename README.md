@@ -13,3 +13,7 @@
 ## 数据结构简介
 ###  链表
 1. 设计链表 MyLinkedList
+
+2. 环形链表 HasCycle
+
+3. 环形链表 II DetectCycle
