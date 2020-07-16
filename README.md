@@ -17,3 +17,5 @@
 2. 环形链表 HasCycle
 
 3. 环形链表 II DetectCycle
+
+4. 相交链表 IntersectingLinkedList
