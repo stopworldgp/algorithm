@@ -19,3 +19,5 @@
 3. 环形链表 II DetectCycle
 
 4. 相交链表 IntersectingLinkedList
+
+5. 删除链表的倒数第N个节点 RemoveNthFromEnd
