@@ -21,3 +21,5 @@
 4. 相交链表 IntersectingLinkedList
 
 5. 删除链表的倒数第N个节点 RemoveNthFromEnd
+
+6. 反转链表 ReverseList
