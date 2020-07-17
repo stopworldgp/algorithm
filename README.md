@@ -13,13 +13,9 @@
 ## 数据结构简介
 ###  链表
 1. 设计链表 MyLinkedList
-
 2. 环形链表 HasCycle
-
 3. 环形链表 II DetectCycle
-
 4. 相交链表 IntersectingLinkedList
-
 5. 删除链表的倒数第N个节点 RemoveNthFromEnd
-
 6. 反转链表 ReverseList
+7. 移除链表元素 RemoveElements
