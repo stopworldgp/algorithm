@@ -19,3 +19,5 @@
 5. 删除链表的倒数第N个节点 RemoveNthFromEnd
 6. 反转链表 ReverseList
 7. 移除链表元素 RemoveElements
+8. 奇偶链表 OddEvenList
+9. 回文链表 IsPalindrome

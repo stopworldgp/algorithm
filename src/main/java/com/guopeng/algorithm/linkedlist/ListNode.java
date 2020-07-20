@@ -5,15 +5,18 @@ package com.guopeng.algorithm.linkedlist;
  * @date 2020/7/16 13:41
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
-        val = x;
+    ListNode() {
     }
 
-    ListNode(int x,ListNode y) {
-        val = x;
-        next = y;
+    ListNode(int val) {
+        val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
