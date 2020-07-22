@@ -21,3 +21,4 @@
 7. 移除链表元素 RemoveElements
 8. 奇偶链表 OddEvenList
 9. 回文链表 IsPalindrome
+10.设计双链表 MyDoubleLinkedList
