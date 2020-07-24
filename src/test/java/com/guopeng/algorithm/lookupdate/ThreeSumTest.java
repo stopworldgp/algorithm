@@ -1,4 +1,4 @@
-package com.guopeng.algorithm;
+package com.guopeng.algorithm.lookupdate;
 
 import com.google.common.collect.Lists;
 import com.guopeng.algorithm.lookuptable.ThreeSum;

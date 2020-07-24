@@ -1,4 +1,4 @@
-package com.guopeng.algorithm;
+package com.guopeng.algorithm.lookupdate;
 
 import com.guopeng.algorithm.lookuptable.RepeatingElements02;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package com.guopeng.algorithm;
+package com.guopeng.algorithm.lookupdate;
 
 import com.guopeng.algorithm.lookuptable.LetterEccentricGrouping;
 import com.guopeng.algorithm.lookuptable.LetterEccentricGrouping_02;
