@@ -22,21 +22,27 @@ package com.guopeng.algorithm;
  */
 public class HappyNumber {
     public boolean isHappy(int n) {
-        if (n <= 0 || n <= 4 && n > 1) {
-            return false;
-        }
-        while (n != 1) {
-            String s = n + "";
-            int reuslt = 0;
-            for (int i = 0; i < s.length(); i++) {
-                reuslt += (int) Math.pow(n % 10, 2);
-                n = n / 10;
-            }
-            n = reuslt;
-            if (n == 4) {
-                return false;
+        int slow=n;
+        int fast=getNext(n);
+
+        while (true){
+            slow=getNext(slow);
+            //快慢指针法，快指针终会追上慢指针，形成一个循环
+            fast=getNext(getNext(fast));
+            if(fast==1||fast==slow){
+                break;
             }
         }
-        return true;
+        return fast==1;
+    }
+    public static int getNext(int n){
+        int sum=0;
+        while(n!=0){
+            int d=n%10;
+            sum+=d*d;
+            n/=10;
+        }
+        return sum;
+
     }
 }
