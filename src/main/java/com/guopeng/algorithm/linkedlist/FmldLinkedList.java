@@ -1,5 +1,8 @@
 package com.guopeng.algorithm.linkedlist;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 来源：https://leetcode-cn.com/explore/learn/card/linked-list/197/conclusion/764/
  * 题目：扁平化多级双向链表
@@ -64,11 +67,51 @@ package com.guopeng.algorithm.linkedlist;
  * 1 <= Node.val <= 10^5
  * 解题思路：
  * 1. 将列表90度旋转，其实类似二叉树，这样就可以模拟二叉树的前序遍历，来完成扁平化操作
+ * 2. 采用stack的方式，进行压栈，先进后出，每次遍历先压进去curr.next再压进去curr.child，这样下次就会弹出child，先将child遍历完，再继续curr.next
  *
  * @author jony.huang
  * @date 2020/7/28 9:35
  */
 public class FmldLinkedList {
+
+    /**
+     * 采用Stack方式
+     *
+     * @param head
+     * @return
+     */
+    public Node flattenStack(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Deque<Node> stack = new ArrayDeque<>();
+        Node prevNode = new Node(-1, null, head, null);
+        stack.push(head);
+        Node curr, prev = prevNode;
+        while (!stack.isEmpty()) {
+            curr = stack.pop();
+
+            prev.next = curr;
+            curr.prev = prev;
+            if (curr.next != null) {
+                stack.push(curr.next);
+            }
+            if (curr.child != null) {
+                stack.push(curr.child);
+                curr.child = null;
+            }
+            prev = curr;
+        }
+        prevNode.next.prev = null;
+        return prevNode.next;
+    }
+
+    /**
+     * 采用递归方式实现
+     *
+     * @param head
+     * @return
+     */
     public Node flatten(Node head) {
         if (head == null) {
             return null;
