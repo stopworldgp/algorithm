@@ -44,8 +44,13 @@ import java.util.Map;
  * 节点数目不超过 1000
  * <p>
  * 解题思路：
+ * 第一种办法
  * 1. 遍历head，将节点放入map(key原节点，value拷贝几点)，并new出拷贝节点(随机节点不变)
  * 2. 遍历新节链表，将随机指针指向拷贝节点
+ * <p>
+ * 第二种办法
+ * 1. 拷贝一个新节点在就旧节点旁，形成一个这样的链表A->A'->B->B'
+ * 2. 遍历新旧交叉链表，旧节点的random.next，就是其拷贝新节点的random
  *
  * @author jony.huang
  * @date 2020/8/1 13:37
@@ -75,10 +80,44 @@ public class CopyRandomList {
         return newHead.next;
     }
 
+    public Node copyRandomListNaon(Node head) {
+        if (head == null) {
+            return head;
+        }
+        //1. 拷贝一个新节点在就旧节点旁，形成一个这样的链表A->A'->B->B'
+        Node curr = head;
+        while (curr != null) {
+            Node node = new Node(curr.val);
+            node.next = curr.next;
+            curr.next = node;
+            curr = node.next;
+        }
+        //2.遍历新旧交叉链表，旧节点的random.next，就是其拷贝新节点的random
+        curr = head;
+        while (curr != null) {
+            if (curr.random != null) {
+                Node node = curr.next;
+                node.random = curr.random.next;
+            }
+            curr = curr.next.next;
+        }
+
+        curr = head;
+        Node newHead = curr.next;
+        Node copyHead = curr.next;
+        while (curr != null) {
+            curr.next = curr.next.next;
+            copyHead.next = (copyHead.next == null) ? null : copyHead.next.next;
+            curr = curr.next;
+            copyHead = copyHead.next;
+        }
+        return newHead;
+    }
+
     public static class Node {
         public int val;
         public Node next;
-        public  Node random;
+        public Node random;
 
         public Node(int val) {
             this.val = val;
