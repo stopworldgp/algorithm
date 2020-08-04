@@ -12,7 +12,7 @@ public class ListNode {
     }
 
     ListNode(int val) {
-        val = val;
+        this.val = val;
     }
 
     ListNode(int val, ListNode next) {
