@@ -27,3 +27,6 @@
 13. 扁平化多级双向链表 FmldLinkedList
 14. 复制带随机指针的链表 CopyRandomList
 15. 旋转链表 RotatingLinkedList
+
+###  数组和字符串
+1. 寻找数组的中心索引 PivotIndex
