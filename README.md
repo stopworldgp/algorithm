@@ -30,3 +30,4 @@
 
 ###  数组和字符串
 1. 寻找数组的中心索引 PivotIndex
+2. 搜索插入位置 SearchInsert
