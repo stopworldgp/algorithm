@@ -34,3 +34,4 @@
 3. 合并区间 MergeInterval
 4. 旋转矩阵 RotationMatrix
 5. 零矩阵 ZeroMatrix
+6. 对角线遍历 DiagonalTraverse（方法一)
