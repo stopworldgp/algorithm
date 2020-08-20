@@ -30,8 +30,9 @@
 
 ###  数组和字符串
 1. 寻找数组的中心索引 PivotIndex
+
 2. 搜索插入位置 SearchInsert
 3. 合并区间 MergeInterval
 4. 旋转矩阵 RotationMatrix
 5. 零矩阵 ZeroMatrix
-6. 对角线遍历 DiagonalTraverse（方法一)
+6. 对角线遍历 DiagonalTraverse（方法一和方法二)
