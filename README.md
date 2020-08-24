@@ -36,3 +36,4 @@
 4. 旋转矩阵 RotationMatrix
 5. 零矩阵 ZeroMatrix
 6. 对角线遍历 DiagonalTraverse（方法一和方法二)
+7. 最长公共前缀 LongestCommonPrefix(1.横向扫描，2.分治)
