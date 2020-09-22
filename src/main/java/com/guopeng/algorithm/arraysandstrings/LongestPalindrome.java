@@ -1,5 +1,7 @@
 package com.guopeng.algorithm.arraysandstrings;
 
+import java.util.function.IntFunction;
+
 /**
  * 来源：https://leetcode-cn.com/leetbook/read/array-and-string/conm7/
  * 题目：最长回文子串
@@ -40,13 +42,66 @@ package com.guopeng.algorithm.arraysandstrings;
  */
 public class LongestPalindrome {
     public String longestPalindrome(String s) {
-        return dynamicProgramming(s);
+        //校验字符串
+        if(s==null|| "".equals(s)){
+            return s;
+        }
+        //中心扩展
+        return centerExtension(s);
+        //动态规划
+//        return dynamicProgramming(s);
+    }
+
+    /**
+     * 中心扩展，将一个元素i当做中心，然后向两边扩展 left=i-1，right=i+1，比较如果相等，则以i为中心的回文子串长度为right-left，循环此操作。
+     * 两种情况
+     * 因为回文分 奇数偶数
+     * 所以 一个i的回文分为  ，(i,i)和(i,i+1)  （不需要做(i-1,i)因为与(i,i+1)等同）
+     *
+     * @param s
+     * @return
+     */
+    private String centerExtension(String s) {
+        //1.转成char数组
+        char[] chars = s.toCharArray();
+        int start = 0;
+        int end = 0;
+        //2.以i为中心，遍历数组
+        for (int i = 0; i < chars.length - 1; i++) {
+            //奇数
+            int oddNumber = getLength(i, i, chars);
+            //偶数
+            int even = getLength(i, i + 1, chars);
+            int temporaryLength = Math.max(oddNumber, even);
+            if (temporaryLength > end - start+1) {
+                start = i - (temporaryLength - 1) / 2;
+                end = i + temporaryLength / 2;
+            }
+        }
+        return s.substring(start, end+1);
+    }
+
+
+    /**
+     * 中心扩展获取长度
+     *
+     * @param left
+     * @param right
+     * @param chars
+     * @return
+     */
+    private int getLength(int left, int right, char[] chars) {
+        while (left >= 0 && right < chars.length && chars[left] == chars[right]) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
     }
 
 
     /**
      * 1. 最有子结构 P[i,j] = P[i+1,j-1] && S[i]==S[j]
-     * 2. 边界 j-1-(i+1)+1<2 => j-i<3   永为true
+     * 2. 边界 i==j 永为true i+1 == j 为true(适用于左下角是空的情况，剩余左下角都能找到值)，
      * 3. 状态转化  P[i,j] ={ P[i+1,j-1] && S[i]==S[j] , =true( j-i<3) }
      * <p>
      * 表格
