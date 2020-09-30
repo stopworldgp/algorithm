@@ -15,7 +15,7 @@ public class LongestPalindromeTest {
     @Test
     public void longestPalindrome() {
         String s = "babad";
-        String expect = "bab";
+        String expect = "aba";
         String actual = longestPalindrome.longestPalindrome(s);
         Assert.assertEquals(expect, actual);
     }

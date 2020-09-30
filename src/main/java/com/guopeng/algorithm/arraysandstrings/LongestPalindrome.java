@@ -1,6 +1,7 @@
 package com.guopeng.algorithm.arraysandstrings;
 
-import java.util.function.IntFunction;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 来源：https://leetcode-cn.com/leetbook/read/array-and-string/conm7/
@@ -43,13 +44,122 @@ import java.util.function.IntFunction;
 public class LongestPalindrome {
     public String longestPalindrome(String s) {
         //校验字符串
-        if(s==null|| "".equals(s)){
+        if (s == null || "".equals(s)) {
             return s;
         }
+//        return officialMethod(s);
+        return manacher(s);
         //中心扩展
-        return centerExtension(s);
+//        return centerExtension(s);
         //动态规划
 //        return dynamicProgramming(s);
+    }
+
+        public String officialMethod(String s) {
+            int start = 0, end = -1;
+            StringBuffer t = new StringBuffer("#");
+            for (int i = 0; i < s.length(); ++i) {
+                t.append(s.charAt(i));
+                t.append('#');
+            }
+            t.append('#');
+            s = t.toString();
+
+            List<Integer> arm_len = new ArrayList<Integer>();
+            int right = -1, j = -1;
+            for (int i = 0; i < s.length(); ++i) {
+                int cur_arm_len;
+                if (right >= i) {
+                    int i_sym = j * 2 - i;
+                    int min_arm_len = Math.min(arm_len.get(i_sym), right - i);
+                    cur_arm_len = expand(s, i - min_arm_len, i + min_arm_len);
+                } else {
+                    cur_arm_len = expand(s, i, i);
+                }
+                arm_len.add(cur_arm_len);
+                if (i + cur_arm_len > right) {
+                    j = i;
+                    right = i + cur_arm_len;
+                }
+                if (cur_arm_len * 2 + 1 > end - start) {
+                    start = i - cur_arm_len;
+                    end = i + cur_arm_len;
+                }
+            }
+
+            StringBuffer ans = new StringBuffer();
+            for (int i = start; i <= end; ++i) {
+                if (s.charAt(i) != '#') {
+                    ans.append(s.charAt(i));
+                }
+            }
+            return ans.toString();
+        }
+
+        public int expand(String s, int left, int right) {
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                --left;
+                ++right;
+            }
+            return (right - left - 2) / 2;
+        }
+
+
+    /**
+     * 马拉车算法
+     *
+     * @return
+     */
+    private String manacher(String s) {
+        //1.插入#，化解奇数偶数问题
+        StringBuffer stringBuffer = new StringBuffer("#");
+        for (int i = 0; i < s.length(); i++) {
+            stringBuffer.append(s.charAt(i));
+            stringBuffer.append("#");
+        }
+        String ss = stringBuffer.toString();
+        char[] chars = ss.toCharArray();
+
+        //2.设置中心点和right边界 ,最长回文 start和end
+        //中心点
+        int j = -1;
+        //右边界
+        int right = -1;
+        int start = 0;
+        int end = -1;
+        List<Integer> lens = new ArrayList<Integer>();
+        //3.遍历s数组
+        for (int i = 0; i < chars.length; i++) {
+            int len;
+            //4.manache算法+中新扩展
+            if (right >= i) {
+                int i_sym = 2 * j - i;
+                len = Math.min(lens.get(i_sym), right - i);
+                len = getRadius(i - len, i + len,chars);
+            } else {
+                //5.中心扩展
+                len = getRadius(i, i, chars);
+            }
+            //6.存储半径
+            lens.add(len);
+            //7.变更中心
+            if (i + len > right) {
+                j = i;
+                right = i + len;
+            }
+            //8.变更最长回文中心
+            if (len * 2 > end - start) {
+                start = i - len;
+                end = i + len;
+            }
+        }
+        StringBuilder s2 = new StringBuilder();
+        for (int i = start; i <= end; i++) {
+            if (chars[i] != '#') {
+                s2.append(chars[i]);
+            }
+        }
+        return s2.toString();
     }
 
     /**
@@ -73,12 +183,12 @@ public class LongestPalindrome {
             //偶数
             int even = getLength(i, i + 1, chars);
             int temporaryLength = Math.max(oddNumber, even);
-            if (temporaryLength > end - start+1) {
+            if (temporaryLength > end - start + 1) {
                 start = i - (temporaryLength - 1) / 2;
                 end = i + temporaryLength / 2;
             }
         }
-        return s.substring(start, end+1);
+        return s.substring(start, end + 1);
     }
 
 
@@ -96,6 +206,14 @@ public class LongestPalindrome {
             right++;
         }
         return right - left - 1;
+    }
+
+    private int getRadius(int left, int right, char[] chars) {
+        while (left >= 0 && right < chars.length && chars[left] == chars[right]) {
+            left--;
+            right++;
+        }
+        return (right - left - 2)/2;
     }
 
 
