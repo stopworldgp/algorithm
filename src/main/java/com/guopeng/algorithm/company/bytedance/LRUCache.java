@@ -26,8 +26,9 @@ public class LRUCache {
     public int get(int key)
     {
         Integer value = map.get(key);
-        if (value == null)
+        if(value == null){
             return -1;
+        }
         return value;
     }
 
