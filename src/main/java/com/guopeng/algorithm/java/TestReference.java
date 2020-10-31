@@ -1,5 +1,7 @@
 package com.guopeng.algorithm.java;
 
+import java.util.Stack;
+
 /**
  *
  * jvm 引用
@@ -12,5 +14,12 @@ package com.guopeng.algorithm.java;
  * @date 2020/9/24 19:24
  */
 public class TestReference {
+
+    public static void main(String[] args) {
+        int target = 10;
+        System.out.println(target/2);
+        System.out.println((target-1)/2);
+
+    }
 
 }
