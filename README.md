@@ -38,3 +38,8 @@
 6. 对角线遍历 DiagonalTraverse（方法一和方法二)
 7. 最长公共前缀 LongestCommonPrefix(1.横向扫描，2.分治)
 8. 最长回文子串 LongestPalindrome  （动态规划版）
+
+###  剑指offer
+1. 二维数组中的查找
+2. 旋转数组的最小数字
+3. 打印从1到最大的n位数
