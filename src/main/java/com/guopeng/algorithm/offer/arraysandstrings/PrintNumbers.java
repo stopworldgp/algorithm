@@ -24,7 +24,4 @@ public class PrintNumbers {
         return result;
     }
 
-
-
-
 }
