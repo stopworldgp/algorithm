@@ -17,7 +17,6 @@ public class FrogNumWays {
         int b = 1;
         for (int i = 0; i < n; i++) {
             int sum = (a + b) % 1000000007;
-            ;
             a = b;
             b = sum;
         }
