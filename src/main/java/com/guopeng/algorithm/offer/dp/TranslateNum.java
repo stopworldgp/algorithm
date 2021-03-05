@@ -13,19 +13,19 @@ package com.guopeng.algorithm.offer.dp;
 public class TranslateNum {
     public int translateNum(int num) {
         char[] chars = ("" + num).toCharArray();
+        int[] f = new int[chars.length];
         //设置状态
-        int a = 1;
-        int b = 1;
-        int res = 1;
+        f[0] = 1;
+        f[1] = 1;
         //状态转移方程
         for (int i = 1; i < chars.length; i++) {
             int tmp = Integer.parseInt(String.valueOf(chars[i - 1]) + String.valueOf(chars[i]));
-            if (tmp > 9 && tmp < 26) {
-                res = a + b;
-                a = b;
-                b = res;
+            if (tmp > 9 && tmp < 26 && i >= 2) {
+                f[i] = f[i - 1] + f[i - 2];
+            } else {
+                f[i] = f[i - 1];
             }
         }
-        return b;
+        return f[chars.length - 1];
     }
 }
