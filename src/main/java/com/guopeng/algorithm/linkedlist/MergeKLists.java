@@ -26,7 +26,7 @@ public class MergeKLists {
             tail.next = node;
             tail = node;
             if (node.next != null) {
-                nodes.offer(node);
+                nodes.offer(node.next);
             }
         }
         return head.next;
