@@ -1,4 +1,4 @@
-package shopee;
+package com.guopeng.algorithm.shopee;
 
 /**
  * 来源：https://leetcode-cn.com/problems/reverse-nodes-in-k-group/solution/k-ge-yi-zu-fan-zhuan-lian-biao-by-leetcode-solutio/
@@ -13,16 +13,15 @@ public class ReverseKGroup {
 
 
     public ListNode reverseKGroup(ListNode head, int k) {
-
         ListNode hair = new ListNode(0);
         hair.next = head;
         ListNode pre = hair;
-        while (true) {
+        while (head != null) {
             ListNode tail = head;
             for (int i = 0; i < k; i++) {
                 tail = tail.next;
                 if (tail == null) {
-                    break;
+                    return hair.next;
                 }
             }
             ListNode nex = tail.next;
@@ -34,8 +33,7 @@ public class ReverseKGroup {
             pre = tail;
             head = tail.next;
         }
-
-
+        return hair.next;
     }
 
 
