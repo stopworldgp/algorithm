@@ -1,4 +1,4 @@
-package com.guopeng.algorithm.shopee;
+package com.gp.algorithm.shopee;
 
 /**
  * 来源：https://leetcode-cn.com/problems/minimum-cost-for-tickets/solution/zui-di-piao-jie-by-leetcode-solution/

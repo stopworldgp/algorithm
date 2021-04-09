@@ -1,5 +1,8 @@
 package com.gp.test;
 
+import com.google.common.collect.Lists;
+
+import java.util.*;
 import java.util.concurrent.Executors;
 
 /**
@@ -12,7 +15,8 @@ import java.util.concurrent.Executors;
  */
 public class Test {
     public static void main(String[] args) {
-        Executors.newCachedThreadPool();
-
+       List<Integer> list = Lists.newArrayList(1,3,45,0);
+       Collections.sort(list, Comparator.comparingInt(c -> c));
+        System.out.println(list);
     }
 }

@@ -1,4 +1,4 @@
-package com.guopeng.algorithm.shopee;
+package com.gp.algorithm.shopee;
 
 import java.util.HashMap;
 import java.util.Map;

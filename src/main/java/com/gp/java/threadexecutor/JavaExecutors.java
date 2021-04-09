@@ -22,7 +22,8 @@ public class JavaExecutors {
         //创建一个可定期或者延时执行任务的定长线程池，支持定时及周期性任务执行。
         ScheduledExecutorService executorService4 = Executors.newScheduledThreadPool(5);
         //ThreadPoolExecutor 创建线程池
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 2, 60L, new LinkedBlockingQueue<>(10), new ThreadPoolExecutor.AbortPolicy());
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 2,
+                60L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(10), new ThreadPoolExecutor.AbortPolicy());
         //修改参数
         threadPoolExecutor.setCorePoolSize(1);
         //修改队列长度
